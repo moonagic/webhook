@@ -46,6 +46,7 @@ function runCommand() {
     if (running === true) {
         return;
     }
+    // 直接将队列置空
     queue.length = 0;
     running = true;
     exec("./auto_build.sh", function(err,stdout,stderr){
@@ -60,7 +61,6 @@ function runCommand() {
 }
 
 function checkoutQueue() {
-    log('queue.length:' + queue.length)
     if (queue.length > 0) {
         runCommand();
     }
