@@ -32,7 +32,7 @@ http.createServer(function(request, response) {
             }
         });
     }
-
+    log('123');
 }).listen(6606, '127.0.0.1');
 
 function sign(secret, data) {

@@ -6,7 +6,11 @@ function log(argument, _logFile) {
         logFile = _logFile
     }
 
-    fs.appendFile(logFile, '[' + time() + '] ' + argument + '\n',  (err)=> {
+    if (!fs.existsSync('./log/')) {
+        fs.mkdirSync('./log/')
+    }
+
+    fs.appendFile('./log/' + logFile, '[' + time() + '] ' + argument + '\n',  (err)=> {
         if(!err) {
             console.log('Append complete.');
         }
@@ -15,12 +19,12 @@ function log(argument, _logFile) {
 
 function time() {
     var date = new Date();
-    var result = data.getFullYear() + '-';
-    result += data.getMonth() + '-';
-    result += data.getDate() + ' ';
-    result += data.getHours() + ':';
-    result += data.getMinutes() + ':';
-    result += data.getSeconds();
+    var result = date.getFullYear() + '-';
+    result += date.getMonth() + '-';
+    result += date.getDate() + ' ';
+    result += date.getHours() + ':';
+    result += date.getMinutes() + ':';
+    result += date.getSeconds();
     return result;
 }
 
