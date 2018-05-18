@@ -11,7 +11,7 @@ var url = ''
 // 当前执行状态
 var running = false
 // 是否有等待中的任务
-var queue = false;
+var queue = [];
 
 http.createServer(function(request, response) {
     response.writeHead(200, {'Content-Type':'application/json'});
@@ -25,7 +25,7 @@ http.createServer(function(request, response) {
             //log(chunk.toString()); chunk中存储了payload的数据,如果需要可以拿出来做更精确的处理.比如部署触发该次push的commit的代码
             if (verify(Signature, sign(secret, chunk.toString())) && verify(url, request.url)) {
                 log('verify');
-                queue = true;
+                queue.push(1)
                 checkoutQueue();
             } else {
                 log('verify faild');
@@ -47,7 +47,7 @@ function runCommand() {
         log('queue')
         return;
     }
-    queue = false;
+    queue.length = 0;
     running = true;
     exec("./auto_build.sh", function(err,stdout,stderr){
         if(err) {
@@ -61,7 +61,7 @@ function runCommand() {
 }
 
 function checkoutQueue() {
-    if (queue === true) {
+    if (queue.length > 0) {
         runCommand();
     }
 }
