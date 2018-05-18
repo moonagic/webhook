@@ -6,7 +6,7 @@ function log(argument, _logFile) {
         logFile = _logFile
     }
 
-    fs.appendFile(logFile, time() + argument + '\n',  (err)=> {
+    fs.appendFile(logFile, '[' + time() + '] ' + argument + '\n',  (err)=> {
         if(!err) {
             console.log('Append complete.');
         }
@@ -14,7 +14,14 @@ function log(argument, _logFile) {
 }
 
 function time() {
-    return '[' + new Date().toString() + '] ';
+    var date = new Date();
+    var result = data.getFullYear() + '-';
+    result += data.getMonth() + '-';
+    result += data.getDate() + ' ';
+    result += data.getHours() + ':';
+    result += data.getMinutes() + ':';
+    result += data.getSeconds();
+    return result;
 }
 
 exports.log = log;
