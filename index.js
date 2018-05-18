@@ -50,9 +50,9 @@ function runCommand() {
     running = true;
     exec("./auto_build.sh", function(err,stdout,stderr){
         if(err) {
-            log("stdout:"+stdout, time() + '_error.log');
+            log('stderr:'+stderr, time() + '_error.log');
         } else {
-            log('error:'+stderr, time() + '_finish.log');
+            log("stdout:"+stdout, time() + '_finish.log');
         }
         running = false;
     });
