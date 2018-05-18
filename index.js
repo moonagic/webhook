@@ -54,9 +54,9 @@ function runCommand() {
     running = true;
     exec("./auto_build.sh", function(err,stdout,stderr){
         if(err) {
-            log('error:'+stderr, 'finish.log');
-        } else {
             log("stdout:"+stdout, 'error.log');
+        } else {
+            log('error:'+stderr, 'finish.log');
         }
         running = false;
     });
