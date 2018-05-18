@@ -22,7 +22,7 @@ http.createServer(function(request, response) {
         request.on('data', function(chunk) {
             var Signature = request.headers['x-hub-signature'];
             //log(chunk.toString()); chunk中存储了payload的数据,如果需要可以拿出来做更精确的处理.比如部署触发该次push的commit的代码
-            if (verifySecret(Signature, sign(secret, chunk.toString())) && verifyUrl(url, request.url)) {
+            if (verify(Signature, sign(secret, chunk.toString())) && verify(url, request.url)) {
                 log('verify');
                 queue = true;
                 checkoutQueue();
@@ -38,11 +38,7 @@ function sign(secret, data) {
     return 'sha1=' + crypto.createHmac('sha1', secret).update(data).digest('hex');
 }
 
-function verifySecret(data0, data1) {
-    return (data0 == data1);
-}
-
-function verifyUrl(data0, data1) {
+function verify(data0, data1) {
     return (data0 == data1);
 }
 
