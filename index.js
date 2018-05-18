@@ -44,7 +44,6 @@ function verify(data0, data1) {
 
 function runCommand() {
     if (running === true) {
-        log('queue')
         return;
     }
     queue.length = 0;
@@ -56,7 +55,7 @@ function runCommand() {
             log("stdout:"+stdout, time() + '_finish.log');
         }
         running = false;
-        runCommand();
+        checkoutQueue();
     });
 }
 
