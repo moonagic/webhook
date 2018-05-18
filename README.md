@@ -14,7 +14,6 @@ var url = ''
 
 ## 开启服务
 ```
-npm install
 node index.js
 ```
 
