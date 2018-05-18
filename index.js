@@ -2,6 +2,7 @@ var http = require('http')
 var crypto = require('crypto')
 var exec = require('child_process').exec
 var log = require('./log2file.js').log
+var time = require('./log2file.js').time
 
 // 在Webhooks中设定的secret
 var secret = ''
@@ -50,9 +51,9 @@ function runCommand() {
     running = true;
     exec("./auto_build.sh", function(err,stdout,stderr){
         if(err) {
-            log("stdout:"+stdout, 'error.log');
+            log("stdout:"+stdout, time() + 'error.log');
         } else {
-            log('error:'+stderr, 'finish.log');
+            log('error:'+stderr, time() + 'finish.log');
         }
         running = false;
     });

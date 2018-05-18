@@ -18,3 +18,4 @@ function time() {
 }
 
 exports.log = log;
+exports.time = time;
