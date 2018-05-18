@@ -64,3 +64,6 @@ typings/
 log
 *.log
 
+# shell
+auto_build.sh
+
