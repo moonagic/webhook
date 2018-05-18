@@ -61,10 +61,9 @@ function runCommand() {
 }
 
 function checkoutQueue() {
+    log('queue.length:' + queue.length)
     if (queue.length > 0) {
         runCommand();
-    } else {
-        log('queue.length:' + queue.length)
     }
 }
 
