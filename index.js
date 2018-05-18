@@ -55,6 +55,7 @@ function runCommand() {
             log("stdout:"+stdout, time() + '_finish.log');
         }
         running = false;
+        runCommand();
     });
 }
 
