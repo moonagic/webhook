@@ -47,6 +47,7 @@ function runCommand() {
         log('queue')
         return;
     }
+    queue = false;
     running = true;
     exec("./auto_build.sh", function(err,stdout,stderr){
         if(err) {
