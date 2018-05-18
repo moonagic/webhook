@@ -43,7 +43,7 @@ function verify(data0, data1) {
 }
 
 function runCommand() {
-    if (running) {
+    if (running === true) {
         log('queue')
         return;
     }
@@ -61,7 +61,7 @@ function runCommand() {
 }
 
 function checkoutQueue() {
-    if (queue) {
+    if (queue === true) {
         runCommand();
     }
 }
