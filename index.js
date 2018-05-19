@@ -28,7 +28,7 @@ http.createServer(function(request, response) {
             if (Signature === sign(secret, chunk.toString()) && url === request.url) {
                 log('secret检测通过,开始部署.');
                 queue.push(1)
-                checkoutQueue();
+                runCommand();
             } else {
                 log('secret检测未通过.');
             }
@@ -45,25 +45,21 @@ function runCommand() {
         log('有正在进行的部署任务,进入队列.');
         return;
     }
+    if (queue.length <= 0) {
+        return;
+    }
     // 直接将队列置空
     queue.length = 0;
     running = true;
     exec("./auto_build.sh", function(err,stdout,stderr){
         if(err) {
-            log('部署失败.✖');
+            log('部署失败.');
             log('stderr:'+stderr, time() + '_error.log');
         } else {
-            log('部署成功.●︎');
+            log('部署成功.︎');
             log("stdout:"+stdout, time() + '_finish.log');
         }
         running = false;
-        checkoutQueue();
+        runCommand();
     });
 }
-
-function checkoutQueue() {
-    if (queue.length > 0) {
-        runCommand();
-    }
-}
-
