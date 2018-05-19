@@ -25,7 +25,7 @@ http.createServer(function(request, response) {
         request.on('data', function(chunk) {
             var Signature = request.headers['x-hub-signature'];
             //log(chunk.toString()); chunk中存储了payload的数据,如果需要可以拿出来做更精确的处理.比如部署触发该次push的commit的代码
-            if (Signature === sign(secret, chunk.toString()) && url == =request.url) {
+            if (Signature === sign(secret, chunk.toString()) && url === request.url) {
                 log('verify');
                 queue.push(1)
                 checkoutQueue();
