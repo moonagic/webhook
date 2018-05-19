@@ -1,7 +1,8 @@
-# Webhooks
+# Webhooks, 一个简单的webhook后台
 
 [利用Github的Webhook功能进行持续集成](https://moonagic.com/continuous-integration-with-github-webhook/)
 
+## 配置
 ```JavaScript
 // 在Webhooks中设定的secret
 var secret = ''
@@ -11,6 +12,8 @@ var url = ''
 // 监听地址端口
 }).listen(6606, '127.0.0.1');
 ```
+自己新建一个用于部署的shell脚本,比如`auto_build.sh`.  
+在任务中执行.
 
 ## 开启服务
 ```
