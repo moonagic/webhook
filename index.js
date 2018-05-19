@@ -20,17 +20,17 @@ http.createServer(function(request, response) {
     response.end();
 
     if (request.headers['x-github-event'] && request.headers['x-github-event'] === 'push') {
-        log('push');
+        log('接收到新的push事件.');
 
         request.on('data', function(chunk) {
             var Signature = request.headers['x-hub-signature'];
             //log(chunk.toString()); chunk中存储了payload的数据,如果需要可以拿出来做更精确的处理.比如部署触发该次push的commit的代码
             if (Signature === sign(secret, chunk.toString()) && url === request.url) {
-                log('verify');
+                log('secret检测通过,开始部署.');
                 queue.push(1)
                 checkoutQueue();
             } else {
-                log('verify faild');
+                log('secret检测未通过.');
             }
         });
     }
@@ -40,12 +40,9 @@ function sign(secret, data) {
     return 'sha1=' + crypto.createHmac('sha1', secret).update(data).digest('hex');
 }
 
-function verify(data0, data1) {
-    return (data0 == data1);
-}
-
 function runCommand() {
     if (running === true) {
+        log('有正在进行的部署任务,进入队列.');
         return;
     }
     // 直接将队列置空
