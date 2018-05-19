@@ -1,8 +1,10 @@
 var http = require('http')
 var crypto = require('crypto')
 var exec = require('child_process').exec
-var log = require('./log2file.js').log
-var time = require('./log2file.js').time
+var log2file = require('./log2file.js')
+
+var log = log2file.log
+var time = log2file.time
 
 // 在Webhooks中设定的secret
 var secret = ''
