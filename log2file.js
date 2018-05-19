@@ -20,11 +20,11 @@ function log(argument, _logFile) {
 function time() {
     var date = new Date();
     var result = date.getFullYear() + '-';
-    result += date.getMonth() + '-';
-    result += date.getDate() + ' ';
-    result += date.getHours() + ':';
-    result += date.getMinutes() + ':';
-    result += date.getSeconds();
+    result += date.getMonth() > 9 ? '' : '0' + date.getMonth() + '-';
+    result += date.getDate() > 9 ? '' : '0' + date.getDate() + ' ';
+    result += date.getHours() > 9 ? '' : '0' + date.getHours() + ':';
+    result += date.getMinutes() > 9 ? '' : '0' + date.getMinutes() + ':';
+    result += date.getSeconds() > 9 ? '' : '0' + date.getSeconds();
     return result;
 }
 
