@@ -50,10 +50,10 @@ function runCommand() {
     running = true;
     exec("./auto_build.sh", function(err,stdout,stderr){
         if(err) {
-            log('部署成功.');
+            log('部署失败.✖');
             log('stderr:'+stderr, time() + '_error.log');
         } else {
-            log('部署失败.');
+            log('部署成功.●︎');
             log("stdout:"+stdout, time() + '_finish.log');
         }
         running = false;
