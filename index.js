@@ -56,7 +56,7 @@ function runCommand() {
             log('部署失败.');
             log('stderr:'+stderr, time() + '_error.log');
         } else {
-            log('部署成功.︎');
+            log('部署成功.');
             log("stdout:"+stdout, time() + '_finish.log');
         }
         running = false;
