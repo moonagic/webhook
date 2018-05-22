@@ -20,7 +20,7 @@ function log(argument, _logFile) {
 function time() {
     var date = new Date();
     var result = date.getFullYear() + '-';
-    result += (date.getMonth() > 9 ? '' : '0') + date.getMonth() + '-';
+    result += (date.getMonth() + 1 > 9 ? '' : '0') + (date.getMonth() + 1) + '-';
     result += (date.getDate() > 9 ? '' : '0') + date.getDate() + ' ';
     result += (date.getHours() > 9 ? '' : '0') + date.getHours() + ':';
     result += (date.getMinutes() > 9 ? '' : '0') + date.getMinutes() + ':';
