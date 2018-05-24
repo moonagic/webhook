@@ -2,6 +2,9 @@
 
 [利用Github的Webhook功能进行持续集成](https://moonagic.com/continuous-integration-with-github-webhook/)
 
+## Deprecated
+我在自己的服务器上使用[GoWebhook](https://github.com/moonagic/GoWebhook)替代这个项目.
+
 ## 配置
 ```JavaScript
 // 在Webhooks中设定的secret
